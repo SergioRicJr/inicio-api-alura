@@ -1,20 +1,23 @@
 // livro.js
 import { Router } from "express"
-import getLivros from "../controladores/livro.js"
+import {getLivros, getLivro} from "../controladores/livro.js"
 
 const router = Router()
 
-router.get('/livros', getLivros)
+router
+    .get('/livros', getLivros)
 
-router.post('/', (req, res) => {
+    .get('/:id', getLivro)
+
+    .post('/', (req, res) => {
     res.send('Você fez uma requisição do tipo POST')
 })
 
-router.patch('/', (req, res) => {
+    .patch('/', (req, res) => {
     res.send('Você fez uma requisição do tipo PATCH')
 })
 
-router.delete('/', (req, res) => {
+    .delete('/', (req, res) => {
     res.send('Você fez uma requisição do tipo DELETE')
 })
 
