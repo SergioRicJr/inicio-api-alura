@@ -1,21 +1,17 @@
 // livro.js
 import { Router } from "express"
-import {getLivros, getLivro} from "../controladores/livro.js"
+import {getLivros, getLivro, postLivro, patchLivro} from "../controladores/livro.js"
 
 const router = Router()
 
 router
     .get('/livros', getLivros)
 
-    .get('/:id', getLivro)
+    .get('/livros/:id', getLivro)
 
-    .post('/', (req, res) => {
-    res.send('Você fez uma requisição do tipo POST')
-})
+    .post('/livros', postLivro)
 
-    .patch('/', (req, res) => {
-    res.send('Você fez uma requisição do tipo PATCH')
-})
+    .patch('/livros/:id', patchLivro) // edicap é com metodo patch
 
     .delete('/', (req, res) => {
     res.send('Você fez uma requisição do tipo DELETE')
