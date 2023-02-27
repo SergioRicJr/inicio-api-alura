@@ -1,6 +1,6 @@
 // livro.js
 import { Router } from "express"
-import {getLivros, getLivro, postLivro, patchLivro} from "../controladores/livro.js"
+import {getLivros, getLivro, postLivro, patchLivro, deleteLivro} from "../controladores/livro.js"
 
 const router = Router()
 
@@ -13,8 +13,6 @@ router
 
     .patch('/livros/:id', patchLivro) // edicap é com metodo patch
 
-    .delete('/', (req, res) => {
-    res.send('Você fez uma requisição do tipo DELETE')
-})
+    .delete('/livros/:id', deleteLivro)
 
 export default router

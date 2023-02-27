@@ -1,4 +1,4 @@
-import {getTodosLivros, getLivroPorId, insereLivro, modificaLivro} from "../servicos/livro.js"
+import {getTodosLivros, getLivroPorId, insereLivro, modificaLivro, removeLivro} from "../servicos/livro.js"
 
 function getLivros(req, res){
     try {
@@ -12,8 +12,16 @@ function getLivros(req, res){
 function getLivro(req, res) {
     try {
         const id = req.params.id
-        const livro = getLivroPorId(id)
-        res.send(livro)
+
+        if (id && Number(id)){ //exemplos
+            // Number(2) -> 2 -> true
+            // Number("eadadd") -> NaN -> false
+            const livro = getLivroPorId(id)
+            res.send(livro)
+        } else {
+            res.status(422) //--> algum dado nao pode ser processado
+            res.send("Id inválido")
+        }
     }  catch(error) {
         res.status(500)
         res.send(error.message)
@@ -23,9 +31,16 @@ function getLivro(req, res) {
 function postLivro(req, res) {
     try {
         const livroNovo = req.body
-        insereLivro(livroNovo)
-        res.status(201) //status de criacao com sucesso
-        res.send("Livro inserido com sucesso")
+            
+        if (req.body.nome){ //se tiver um campo nome faz se n
+            insereLivro(livroNovo)
+            res.status(201) //status de criacao com sucesso
+            res.send("Livro inserido com sucesso")
+        } else {
+            res.status(422)
+            res.send("O campo nome é obrigatório")
+        }
+
     } catch(error) {
         res.status(500)
         res.send(error.message)
@@ -35,13 +50,38 @@ function postLivro(req, res) {
 function patchLivro(req, res) {
     try {
         const id = req.params.id
-        const body = req.body
-        modificaLivro(body,id)
-        res.send("Livro alterado com sucesso")
+
+        if (id && Number(id)){
+            const body = req.body
+            modificaLivro(body,id)
+            res.send("Livro alterado com sucesso")
+        } else {
+            res.status(422) //--> algum dado nao pode ser processado
+            res.send("Id inválido")
+        }
+        
     } catch(error) {
         res.status(500)
         res.send(error.message)
     }
 }
 
-export {getLivros,getLivro, postLivro, patchLivro}
+function deleteLivro(req, res) {
+    try {
+        const id = req.params.id
+
+        if (id && Number(id)){
+            removeLivro(id)
+            res.send("O livro foi deletado com sucesso")
+        } else {
+            res.status(422) //--> algum dado nao pode ser processado
+            res.send("Id inválido")
+        }
+        
+    } catch(error){
+        res.status(500)
+        res.send(error.message)
+    }
+}
+
+export {getLivros,getLivro, postLivro, patchLivro, deleteLivro}

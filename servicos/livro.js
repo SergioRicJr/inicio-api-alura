@@ -32,4 +32,11 @@ function modificaLivro(modificacoes, id) {
     fs.writeFileSync("livros.json", JSON.stringify(livrosAtuais))
 }
 
-export {getTodosLivros, getLivroPorId, insereLivro, modificaLivro}
+function removeLivro(id) {
+    const livros = getTodosLivros()
+    const indice = livros.findIndex(livro => livro.id == id)
+    livros.splice(indice, 1)
+    fs.writeFileSync("livros.json",JSON.stringify(livros))
+}
+
+export {getTodosLivros, getLivroPorId, insereLivro, modificaLivro, removeLivro}
