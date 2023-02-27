@@ -11,6 +11,9 @@ app.use(express.json(), router) //express.json() para conseguir receber json no 
 app.get("/", (req, res)=>{
     res.send("olá mundo")
 })
+app.get('/inicio', (req, res)=>{
+    res.sendFile("C:\\Users\\Sergio Nascimento\\Documents\\Aulas-faculdade\\api-teste-projeto\\pages\\html\\index.html")
+})
 
 
 
