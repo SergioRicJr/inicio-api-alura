@@ -1,4 +1,4 @@
-import {conectaApi} from "./conectaApi" 
+import {conectaApi} from "./conectaApi.js" 
 
 const button = document.querySelector("button")
 
@@ -10,3 +10,6 @@ async function CriandoLivro() {
 }
 
 button.addEventListener("click", CriandoLivro)
+
+
+//tirar html do estatic e deixar so os arquivos de link
