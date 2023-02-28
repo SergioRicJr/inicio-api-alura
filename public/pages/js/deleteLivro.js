@@ -1,4 +1,4 @@
-import { conectaApi } from "./conectaApi";
+import {conectaApi} from "./conectaApi.js";
 
 const btn = document.querySelector("button")
 const input = document.querySelector("#id")
