@@ -15,7 +15,9 @@ app.get('/inicio', (req, res)=>{
     res.sendFile("C:\\Users\\Sergio Nascimento\\Documents\\Aulas-faculdade\\api-teste-projeto\\pages\\html\\index.html")
 })
 
+app.get('/js',(req, res)=> res.sendFile("C:\\Users\\Sergio Nascimento\\Documents\\Aulas-faculdade\\api-teste-projeto\\pages\\js\\index.js"))
 
+app.get('/conectaApi', (req, res)=> res.sendFile("C:\\Users\\Sergio Nascimento\\Documents\\Aulas-faculdade\\api-teste-projeto\\pages\\js\\conectaApi.js"))
 
 app.listen(PORT, ()=>{
     console.log(`servidor escutando em http://localhost:${PORT}`)
