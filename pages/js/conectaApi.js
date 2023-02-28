@@ -16,6 +16,13 @@ async function adicLivros(Id, Nome){
     return conectConvert
 }
 
+async function deletarLivro(Id) {
+    const connect = await fetch(`http://localhost:3000/livros/${Id}`, {
+        method: "DELETE"
+    })
+}
+
 export const conectaApi = {
-    adicLivros
+    adicLivros,
+    deletarLivro
 }

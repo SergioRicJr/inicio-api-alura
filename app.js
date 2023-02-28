@@ -1,5 +1,8 @@
 import express from 'express';
 import router from './rotas/livro.js';
+import path from "path"
+
+const __dirname = path.resolve()
 
 const app = express() //cria servidor express
 
@@ -12,12 +15,20 @@ app.get("/", (req, res)=>{
     res.send("olá mundo")
 })
 app.get('/inicio', (req, res)=>{
-    res.sendFile("C:\\Users\\Sergio Nascimento\\Documents\\Aulas-faculdade\\api-teste-projeto\\pages\\html\\index.html")
+    res.sendFile(__dirname + "\\pages\\html\\index.html")
 })
 
-app.get('/js',(req, res)=> res.sendFile("C:\\Users\\Sergio Nascimento\\Documents\\Aulas-faculdade\\api-teste-projeto\\pages\\js\\index.js"))
+app.get('/delete', (req,res)=>{
+    res.sendFile(__dirname + "\\pages\\html\\deleteLivro.html")
+})
 
-app.get('/conectaApi', (req, res)=> res.sendFile("C:\\Users\\Sergio Nascimento\\Documents\\Aulas-faculdade\\api-teste-projeto\\pages\\js\\conectaApi.js"))
+app.get('/deletar', (req, res)=>{
+    res.sendFile(__dirname + "\\pages\\js\\deleteLivro.js")
+})
+
+app.get('/js',(req, res)=> res.sendFile(__dirname + "\\pages\\js\\index.js"))
+
+app.get('/conectaApi', (req, res)=> res.sendFile(__dirname + "\\pages\\js\\conectaApi.js"))
 
 app.listen(PORT, ()=>{
     console.log(`servidor escutando em http://localhost:${PORT}`)
