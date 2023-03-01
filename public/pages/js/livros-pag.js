@@ -29,3 +29,49 @@ async function InserirElementos() {
 }
 
 InserirElementos()
+
+const btn = document.querySelector("#pesquisar")
+const input = document.querySelector("#pesquisa")
+
+async function LivrosFiltrados(pesquisa) {
+    const query = await fetch(`http://localhost:3000/2?query=${pesquisa}`)
+
+    const queryConvert = await query.json()
+
+    return queryConvert
+}
+
+btn.addEventListener("click", async ()=>{
+    const inputValue = input.value
+
+    if (inputValue != '') {
+        const livros = await LivrosFiltrados(inputValue)
+        console.log(livros)
+
+        // const livrosExistentes = await conectaApi.listaLivros()
+        // console.log(livrosExistentes)
+        // const livrosExistentes
+        // const qtdeLivros = livrosExistentes.length
+        const areaLivros = document.querySelectorAll("#area-livros > *") 
+        
+
+        for (let x of areaLivros) {
+            x.remove()
+        }
+
+        for (let i of await livros) {
+            var id = i.id
+            var titulo = i.nome
+            CriaElementos(id, titulo)
+        }
+    } else {
+        const areaLivros = document.querySelectorAll("#area-livros > *") 
+    
+        for (let x of areaLivros) {
+            x.remove()
+        }
+        InserirElementos()
+    }
+})
+
+// LivrosFiltrados()

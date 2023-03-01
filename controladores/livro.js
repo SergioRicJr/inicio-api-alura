@@ -1,4 +1,4 @@
-import {getTodosLivros, getLivroPorId, insereLivro, modificaLivro, removeLivro} from "../servicos/livro.js"
+import {getTodosLivros, getLivroPorId, insereLivro, modificaLivro, removeLivro, retornaLivrosFiltrados} from "../servicos/livro.js"
 
 function getLivros(req, res){
     try {
@@ -84,4 +84,15 @@ function deleteLivro(req, res) {
     }
 }
 
-export {getLivros,getLivro, postLivro, patchLivro, deleteLivro}
+function filtraLivro(req, res) {
+    try {
+        const query = req.query.query 
+        const livros = retornaLivrosFiltrados(query)
+        res.send(livros)
+    } catch {
+        res.status(500)
+        res.send("Não foi possivel concluir a busca")
+    }
+}
+
+export {getLivros,getLivro, postLivro, patchLivro, deleteLivro, filtraLivro}

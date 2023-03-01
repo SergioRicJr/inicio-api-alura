@@ -1,11 +1,11 @@
 // livro.js
 import { Router } from "express"
-import {getLivros, getLivro, postLivro, patchLivro, deleteLivro} from "../controladores/livro.js"
+import {getLivros, getLivro, postLivro, patchLivro, deleteLivro, filtraLivro} from "../controladores/livro.js"
 
 const router = Router()
 
 router
-    .get("/", (req, res)=> {res.send("ola")})
+    .get("/2", filtraLivro)
 
     .get('/livros', getLivros)
 

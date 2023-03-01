@@ -39,5 +39,15 @@ function removeLivro(id) {
     fs.writeFileSync("livros.json",JSON.stringify(livros))
 }
 
-export {getTodosLivros, getLivroPorId, insereLivro, modificaLivro, removeLivro}
+function retornaLivrosFiltrados(query) { //implementar regex depois
+    const livros = getTodosLivros()
+
+    // var expressao = new RegExp(query, "i")
+
+    const livrosFiltrados = livros.filter(livro => livro.id == query || livro.nome == query)
+
+    return livrosFiltrados
+}
+
+export {getTodosLivros, getLivroPorId, insereLivro, modificaLivro, removeLivro, retornaLivrosFiltrados}
 
