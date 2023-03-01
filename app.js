@@ -2,7 +2,7 @@ import express from 'express';
 import router from './rotas/livro.js';
 import path from "path"
 
-const __dirname = path.resolve()
+const __dirname = path.resolve() //pega o nome do diretório
 
 const app = express() //cria servidor express
 
