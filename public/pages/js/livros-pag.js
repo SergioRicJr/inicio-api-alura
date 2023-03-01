@@ -42,7 +42,8 @@ async function LivrosFiltrados(pesquisa) {
 }
 
 btn.addEventListener("click", async ()=>{
-    const inputValue = input.value
+    var inputValue = input.value
+    inputValue = inputValue.trim()
 
     if (inputValue != '') {
         const livros = await LivrosFiltrados(inputValue)

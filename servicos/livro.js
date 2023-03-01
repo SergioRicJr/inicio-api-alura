@@ -41,7 +41,7 @@ function removeLivro(id) {
 
 function retornaLivrosFiltrados(query) { //implementar regex depois
     const livros = getTodosLivros()
-
+    
     var expressao = new RegExp(query, "i")
 
     const livrosFiltrados = livros.filter(livro => expressao.test(livro.id)|| expressao.test(livro.nome))
