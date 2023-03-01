@@ -13,16 +13,16 @@ app.use(express.static('public'))
 // app.use('/', router) necessario usar o router em middleware
 app.use(express.json(), router) //express.json() para conseguir receber json no body
 
-app.get("/", (req, res)=>{
-    res.send("olá mundo")
-})
-app.get('/inicio', (req, res)=>{
-    res.sendFile(__dirname + "\\public\\pages\\html\\index.html")
-})
+// app.get("/", (req, res)=>{
+//     res.send("olá mundo")
+// })
+// app.get('/inicio', (req, res)=>{
+//     res.sendFile(__dirname + "\\public\\pages\\html\\index.html")
+// })
 
-app.get('/delete', (req,res)=>{
-    res.sendFile(__dirname + "\\pages\\html\\deleteLivro.html")
-})
+// app.get('/delete', (req,res)=>{
+//     res.sendFile(__dirname + "\\pages\\html\\deleteLivro.html")
+// })
 
 // app.get('/deletar', (req, res)=>{
 //     res.sendFile(__dirname + "\\pages\\js\\deleteLivro.js")

@@ -4,21 +4,25 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Livraria</title>
-    <link rel="stylesheet" href="./pages/css/style.css">
-    <script src="./pages/js/index.js" type="module" defer></script>
+    <title>Document</title>
+    <link rel="stylesheet" href="./pages/css/livros.css">
+    <script src="./pages/js/livros-pag.js" type="module" defer></script>
 </head>
 <body>
     <header>
-        Livaria do Sergio
+        <h1>Livraria do Sergio</h1>
+        <div id="area-pesq">
+            <input type="text" name="" id="pesquisa"></input>
+            <button id="pesquisar">Pesquisar</button>
+        </div>
     </header>
-    <main>
-        <label for="Id">Id:</label>
-        <input type="text" name="Id" id="id"></input>
-        <label for="Nome">Nome:</label>
-        <input type="text" name="Nome" id="nome"></input>
-        <button> Criar novo livro</button>
+    <main id="area-livros">
+        <div class="Livro">
+            <div class="card-livro">
+                numero do livro
+            </div>
+            <h2>Titulo do livro</h2>
+        </div>
     </main>
-
 </body>
 </html>

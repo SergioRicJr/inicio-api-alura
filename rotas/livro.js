@@ -5,6 +5,8 @@ import {getLivros, getLivro, postLivro, patchLivro, deleteLivro} from "../contro
 const router = Router()
 
 router
+    .get("/", (req, res)=> {res.send("ola")})
+
     .get('/livros', getLivros)
 
     .get('/livros/:id', getLivro)

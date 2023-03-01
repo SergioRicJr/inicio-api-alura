@@ -22,7 +22,16 @@ async function deletarLivro(Id) {
     })
 }
 
+async function listaLivros() {
+    const connect = await fetch("http://localhost:3000/livros")
+
+    const connectConvert = await connect.json()
+
+    return connectConvert
+}
+
 export const conectaApi = {
     adicLivros,
-    deletarLivro
+    deletarLivro,
+    listaLivros
 }
